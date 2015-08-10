@@ -1,6 +1,6 @@
 {
   "name": "objvalidator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Validation objects by JSON-based rules.",
   "main": "index.js",
   "directories": {
@@ -33,7 +33,7 @@
     "url": "https://github.com/wmoll/objvalidator/issues"
   },
   "homepage": "https://github.com/wmoll/objvalidator/",
-  "_id": "object-validator@0.1.0",
+  "_id": "object-validator@0.1.1",
   "_shasum": "24e811e1abe07942a495c5a4f462e45af9946117",
   "_from": "wmoll/objvalidator",
   "_resolved": ""
