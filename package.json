@@ -1,0 +1,40 @@
+{
+  "name": "objvalidator",
+  "version": "0.1.0",
+  "description": "Validation objects by JSON-based rules.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "testX": "mocha",
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmoll/objvalidator.git"
+  },
+  "keywords": [
+    "validation",
+    "security"
+  ],
+  "devDependencies": {
+    "mocha": "~2.2.5",
+    "eslint": "~0.23.0"
+  },
+  "author": {
+    "name": "Vladimir Mally"
+  },
+  "license": "MIT",
+  "gitHead": "",
+  "readme": "",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/wmoll/objvalidator/issues"
+  },
+  "homepage": "https://github.com/wmoll/objvalidator/",
+  "_id": "object-validator@0.1.0",
+  "_shasum": "24e811e1abe07942a495c5a4f462e45af9946117",
+  "_from": "wmoll/objvalidator",
+  "_resolved": ""
+}
