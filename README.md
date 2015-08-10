@@ -40,15 +40,18 @@ Load this config in your application (Node.js example)
 
     // Load Config
     var validatorConfig = require("./validationmodel.conf.js");
-    // Load object Validator Module
+    // Load Object Validator Module
     var ObjValidation  = require('objvalidator');
-    
+
+Somewhere in the app - run validation...
+
     var type = 'person';
+    // Lookup validator for the object
     var personvalidator = validatorConfig[type];
     // Instantiate validator
     var validator = new ObjValidation.ObjValidation();
     // Object to Validate
-    p = {'firstname': 'Bob', 'firstname': '',};
+    var a_person = {'firstname': 'Bob', 'firstname': '',};
     // Run Validation
-    var validation = validator.validateProcess(personvalidator, p);
+    var validation = validator.validateProcess(personvalidator, a_person);
 
