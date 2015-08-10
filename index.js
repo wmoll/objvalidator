@@ -5,14 +5,12 @@ function ObjValidation(opts) {
 
     var validator = this;
 
-
-
     this.checkEmpty = function(value, rule){
         if(value.length === 0 ){
             if(typeof rule.message !== 'undefined'){
                 return rule.message;
             }else{
-                return 'Value should by not empty';
+                return 'Value should be not empty';
             }
         }
         return '';
@@ -27,7 +25,7 @@ function ObjValidation(opts) {
             if(typeof rule.message !== 'undefined'){
                 return rule.message;
             }else{
-                return 'Value should by minimum '+parseInt(rule.param)+' chars length';
+                return 'Value should be minimum '+parseInt(rule.param)+' chars length';
             }
         }
         return '';
@@ -42,9 +40,67 @@ function ObjValidation(opts) {
             if(typeof rule.message !== 'undefined'){
                 return rule.message;
             }else{
-                return 'Value should by minimum '+parseInt(rule.param)+' chars length';
+                return 'Value should be minimum '+parseInt(rule.param)+' chars length';
             }
         }
+        return '';
+    }
+
+    this.checkEmail = function(value, rule){
+        var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+        if(!re.test(value)){
+            if(typeof rule.message !== 'undefined'){
+                return rule.message;
+            }else{
+                return 'Value should be email';
+            }
+        }
+        return '';
+    }
+
+    this.checkList = function(value, rule){
+        if(typeof rule.param === 'undefined'){
+            return 'Validation rule error!';
+        }
+        if(rule.param.indexOf(value)=== -1){
+            if(typeof rule.message !== 'undefined'){
+                return rule.message;
+            }else{
+                return 'Value should be in array of elements: '+ rule.param.join(', ');
+            }
+        }
+        return '';
+    }
+
+    this.checkMinValue = function(value, rule){
+        if(typeof rule.param === 'undefined'){
+            return 'Validation rule error!';
+        }
+
+        if(value < rule.param){
+            if(typeof rule.message !== 'undefined'){
+                return rule.message;
+            }else{
+                return 'Value should be bigger then '+ rule.param;
+            }
+        }
+
+        return '';
+    }
+
+    this.checkMaxValue = function(value, rule){
+        if(typeof rule.param === 'undefined'){
+            return 'Validation rule error!';
+        }
+
+        if(value > rule.param){
+            if(typeof rule.message !== 'undefined'){
+                return rule.message;
+            }else{
+                return 'Value should be less then '+ rule.param;
+            }
+        }
+
         return '';
     }
 
@@ -54,7 +110,7 @@ function ObjValidation(opts) {
             //value for testing
             var value = object[rule.fieldId];
 
-            //check for isset
+            //check for is set
             if(typeof(value)==='undefined'){
                 errors.push({
                     field:rule.fieldId,
@@ -72,6 +128,18 @@ function ObjValidation(opts) {
                             break
                         case 'maxLength':
                             validMessage = validator.checkMaxLength(value, singlerule);
+                            break
+                        case 'email':
+                            validMessage = validator.checkEmail(value, singlerule);
+                            break
+                        case 'list':
+                            validMessage = validator.checkList(value, singlerule);
+                            break
+                        case 'numberMin':
+                            validMessage = validator.checkMinValue(value, singlerule);
+                            break
+                        case 'numberMax':
+                            validMessage = validator.checkMaxValue(value, singlerule);
                             break
                         default:
                     }
