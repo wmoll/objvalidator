@@ -23,11 +23,11 @@ function ObjValidation(opts) {
             return 'Validation rule error!';
         }
 
-        if(value.length < parceInt(rule.param) ){
+        if(value.length < parseInt(rule.param) ){
             if(typeof rule.message !== 'undefined'){
                 return rule.message;
             }else{
-                return 'Value should by minimum '+parceInt(rule.param)+' chars length';
+                return 'Value should by minimum '+parseInt(rule.param)+' chars length';
             }
         }
         return '';
@@ -38,11 +38,11 @@ function ObjValidation(opts) {
             return 'Validation rule error!';
         }
 
-        if(value.length > parceInt(rule.param) ){
+        if(value.length > parseInt(rule.param) ){
             if(typeof rule.message !== 'undefined'){
                 return rule.message;
             }else{
-                return 'Value should by minimum '+parceInt(rule.param)+' chars length';
+                return 'Value should by minimum '+parseInt(rule.param)+' chars length';
             }
         }
         return '';
