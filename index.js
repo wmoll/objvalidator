@@ -14,7 +14,7 @@ function ObjValidation(opts) {
             }
         }
         return '';
-    }
+    };
 
     this.checkMinLength = function(value, rule){
         if(typeof rule.param === 'undefined'){
@@ -29,7 +29,7 @@ function ObjValidation(opts) {
             }
         }
         return '';
-    }
+    };
 
     this.checkMaxLength = function(value, rule){
         if(typeof rule.param === 'undefined'){
@@ -44,7 +44,7 @@ function ObjValidation(opts) {
             }
         }
         return '';
-    }
+    };
 
     this.checkEmail = function(value, rule){
         var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -56,7 +56,7 @@ function ObjValidation(opts) {
             }
         }
         return '';
-    }
+    };
 
     this.checkList = function(value, rule){
         if(typeof rule.param === 'undefined'){
@@ -70,7 +70,7 @@ function ObjValidation(opts) {
             }
         }
         return '';
-    }
+    };
 
     this.checkMinValue = function(value, rule){
         if(typeof rule.param === 'undefined'){
@@ -86,7 +86,7 @@ function ObjValidation(opts) {
         }
 
         return '';
-    }
+    };
 
     this.checkMaxValue = function(value, rule){
         if(typeof rule.param === 'undefined'){
@@ -102,7 +102,7 @@ function ObjValidation(opts) {
         }
 
         return '';
-    }
+    };
 
     this.validateProcess = function (rules, object) {
         var errors = [];
@@ -112,42 +112,44 @@ function ObjValidation(opts) {
 
             //check for is set
             if(typeof(value)==='undefined'){
-                errors.push({
-                    field:rule.fieldId,
-                    messge:'Field '+rule.fieldId+' not defined'
-                });
+                if(rule.rules.length>0){
+                    errors.push({
+                        field:rule.fieldId,
+                        message:'Field '+rule.fieldId+' not defined'
+                    });
+                }
             }else{
                 rule.rules.forEach(function(singlerule){
                     var validMessage = '';
                     switch (singlerule.method) {
                         case 'notEmpty':
                             validMessage = validator.checkEmpty(value, singlerule);
-                            break
+                            break;
                         case 'minLength':
                             validMessage = validator.checkMinLength(value, singlerule);
-                            break
+                            break;
                         case 'maxLength':
                             validMessage = validator.checkMaxLength(value, singlerule);
-                            break
+                            break;
                         case 'email':
                             validMessage = validator.checkEmail(value, singlerule);
-                            break
+                            break;
                         case 'list':
                             validMessage = validator.checkList(value, singlerule);
-                            break
+                            break;
                         case 'numberMin':
                             validMessage = validator.checkMinValue(value, singlerule);
-                            break
+                            break;
                         case 'numberMax':
                             validMessage = validator.checkMaxValue(value, singlerule);
-                            break
+                            break;
                         default:
                     }
 
                     if(validMessage !== ''){
                         errors.push({
                             field:rule.fieldId,
-                            messge:validMessage
+                            message:validMessage
                         });
                     }
 
