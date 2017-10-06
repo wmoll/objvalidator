@@ -112,7 +112,7 @@ function ObjValidation(opts) {
 
             //check for is set
             if(typeof(value)==='undefined'){
-                if(rule.rules.length>0){
+                if(rule.rules.length>0 && !rule.optional){
                     errors.push({
                         field:rule.fieldId,
                         message:'Field '+rule.fieldId+' not defined'
@@ -155,7 +155,7 @@ function ObjValidation(opts) {
 
                 });
             }
-        })
+        });
 
         return errors;
     };
