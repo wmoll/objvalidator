@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wmoll/objvalidator.svg?branch=master)](https://travis-ci.org/wmoll/objvalidator)
+
 # objvalidator
 
 Simple nodejs module for validate object elements by custom rule with custom
