@@ -90,7 +90,7 @@ describe("Test ObjValidation functionality", function () {
     var object3 = {singer: "B.B. King"};         // will pass as off singerEmail is not presented and the rule is optional
 
     assert(objValidation.validateProcess(validationParams, object1).length === 0, "object1 test did not passed");
-    assert(objValidation.validateProcess(validationParams, object2).length === 1, "object2 test did not passed");
+    assert(objValidation.validateProcess(validationParams, object2).length === 0, "object2 test did not passed");
     assert(objValidation.validateProcess(validationParams, object3).length === 0, "object3 test did not passed");
 
   });
