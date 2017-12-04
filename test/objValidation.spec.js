@@ -38,13 +38,13 @@ describe("Test ObjValidation functionality", function () {
 
     var object2 = {singer: "B.B. King", song: "", type: "live"};  // song exist but empty -> raise error
 
-    var object3 = {singer: "B.B. King", song: "The Thrill Is Gone", type: ""}; // Type exist but is empty -> raise error
+    var object3 = {singer: "B.B. King", song: "The Thrill Is Gone", type: ""}; // Type exist but is empty
 
     var object4 = {singer: "B.B. King", song: "The Thrill Is Gone"}; // Type is not exist
 
     assert(objValidation.validateProcess(validationParams, object1).length === 0, "singer test did not passed");
     assert(objValidation.validateProcess(validationParams, object2).length === 1, "song test did not passed");
-    assert(objValidation.validateProcess(validationParams, object3).length === 1, "type test did not passed");
+    assert(objValidation.validateProcess(validationParams, object3).length === 0, "type optional did not passed");
     assert(objValidation.validateProcess(validationParams, object4).length === 0, "type optional test did not passed");
 
   });

@@ -110,6 +110,10 @@ function ObjValidation(opts) {
             //value for testing
             var value = object[rule.fieldId];
 
+            if(rule.optional && (typeof(value)==='undefined' || value.length == 0)){
+              return;
+            }
+
             //check for is set
             if(typeof(value)==='undefined'){
                 if(rule.rules.length>0 && !rule.optional){
@@ -123,9 +127,7 @@ function ObjValidation(opts) {
                     var validMessage = '';
                     switch (singlerule.method) {
                         case 'notEmpty':
-                            if(!rule.optional){
-                              validMessage = validator.checkEmpty(value, singlerule);
-                            }
+                            validMessage = validator.checkEmpty(value, singlerule);
                             break;
                         case 'minLength':
                             validMessage = validator.checkMinLength(value, singlerule);

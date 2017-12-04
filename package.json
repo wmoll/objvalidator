@@ -1,6 +1,6 @@
 {
   "name": "objvalidator",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Validation objects by JSON-based rules.",
   "main": "index.js",
   "directories": {
